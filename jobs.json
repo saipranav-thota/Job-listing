@@ -1,0 +1,86 @@
+[
+    {
+        "position": "UX Researcher",
+        "company": "WebFlow",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "California, CA",
+        "time": "1 hour ago"
+    },
+    {
+        "position": "Quality Assurance",
+        "company": "Notion",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Idaho, ID",
+        "time": "2 hours ago"
+    },
+    {
+        "position": "Senior Dev",
+        "company": "Zappler",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Oklahoma, OK",
+        "time": "6 hours ago"
+    },
+    {
+        "position": "Product Designer",
+        "company": "MailChimp",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "New York, NY",
+        "time": "3 hours ago"
+    },
+    {
+        "position": "Sales",
+        "company": "Outreach",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Dallas, TX",
+        "time": "10 hours ago"
+    },
+    {
+        "position": "Project Manager",
+        "company": "SquareSpace",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Florida, FL",
+        "time": "1 day ago"
+    },
+    {
+        "position": "UX Researcher",
+        "company": "WebFlow",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "California, CA",
+        "time": "1 hour ago"
+    },
+    {
+        "position": "Quality Assurance",
+        "company": "Notion",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Idaho, ID",
+        "time": "2 hours ago"
+    },
+    {
+        "position": "Senior Dev",
+        "company": "Zappler",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Oklahoma, OK",
+        "time": "6 hours ago"
+    },
+    {
+        "position": "Product Designer",
+        "company": "MailChimp",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "New York, NY",
+        "time": "3 hours ago"
+    },
+    {
+        "position": "Sales",
+        "company": "Outreach",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Dallas, TX",
+        "time": "10 hours ago"
+    },
+    {
+        "position": "Project Manager",
+        "company": "SquareSpace",
+        "details": ["Fulltime", "Senior level", "Remote"],
+        "location": "Florida, FL",
+        "time": "1 day ago"
+    }
+]

@@ -171,25 +171,39 @@ nav ul li a {
     display: flex;
     flex-direction: row; /* Stacks job content vertically */
     flex-wrap: nowrap; /* Prevents wrapping of child elements */
-    margin: 10px; /* Adds space between job listings */
+    margin: 20px; /* Adds space between job listings */
     align-items:  baseline;
 }
 
 /* Job Details */
 .job-details {
-    display: flex; /* Creates a flexible layout for job details */
-    gap: 20px; /* Adds space between the columns */
+    display: grid;
+    grid-template-columns: 3fr 4fr 1.5fr 1.5fr 1fr;
     align-items: start; /* Aligns items at the start of each grid cell */
     margin-bottom: 10px; /* Adds space below this section */
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.job-details:hover
+{
+    background-color: #f9f7f7;
 }
 
 .job-company p{
-    font-size: 25px !important;
+    font-size: 23px !important;
 }
 
 /* Specific styles for each section within the grid */
 .job-details-pos {
-    margin-right: 150px;
+    margin-right: 25px;
+}
+
+.job-details-pos {
+    white-space: nowrap !important; /* Prevents the text from wrapping to the next line */
+    
+    text-overflow: ellipsis; /* Adds an ellipsis (...) if the text is too long to fit */
+    width: 200px;    
 }
 
 .job-details-details {
@@ -209,7 +223,7 @@ nav ul li a {
 
 .job-timing p {
     text-align: center;
-    font-size: 23px !important; /* Increased size by 20px */
+    font-size: 20px !important; /* Increased size by 20px */
 }
 
 .job-details-location p {
@@ -220,7 +234,7 @@ nav ul li a {
 
 .position p {
     font-weight: bolder;
-    font-size: 43px; /* Increased size by 20px */
+    font-size: 30px !important; /* Increased size by 20px */
 }
 
 .job-details p {
