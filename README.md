@@ -7,5 +7,4 @@ Sai Pranav Thota
 Jaideep Naidu
 Akshat Raghunath
 
-This is a commit
 
