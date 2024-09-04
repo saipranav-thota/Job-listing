@@ -20,34 +20,41 @@ header {
 }
 
 .logo img {
-    width: 50px;
+    width: 90px;
+    height: 100px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    font-size: 25px;
 }
 
 .user-profile {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 25px;
 }
 
 .user-profile img {
-    width: 40px;
+    width: 60px;
     border-radius: 50%;
 }
 
 .search-section {
+    background-image:url('hiring.jpg');
     background-color: #E9ECEF;
+    background-repeat: no-repeat;
+    background-size:cover;
+    
     padding: 40px 30px;
     text-align: center;
 }
@@ -63,7 +70,8 @@ nav ul li a {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 2000px;
+    height: 180px;
     margin: 0 auto;
 }
 
@@ -74,7 +82,8 @@ nav ul li a {
     border-radius: 50px;
     padding: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 90%;
+    height: 50%;
 }
 
 .search-input {
@@ -86,6 +95,7 @@ nav ul li a {
     margin-right: 15px;
     flex-grow: 1;
     position: relative;
+    height: 70%;
 }
 
 .search-input input {
@@ -93,7 +103,7 @@ nav ul li a {
     background: none;
     outline: none;
     padding-left: 25px;
-    font-size: 16px;
+    font-size: 26px;
     color: #777;
     width: 100%;
 }
@@ -111,7 +121,7 @@ nav ul li a {
     border-radius: 50px;
     padding: 15px 30px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 36px;
     transition: background-color 0.3s ease;
 }
 
@@ -119,26 +129,6 @@ nav ul li a {
     background-color: #0056b3;
 }
 
-/* Tags section */
-.tags {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.tags button {
-    padding: 5px 15px;
-    border: 1px solid #007BFF;
-    background-color: #fff;
-    color: #007BFF;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.tags button:hover {
-    background-color: #007BFF;
-    color: #fff;
-}
 
 
 
@@ -156,6 +146,64 @@ nav ul li a {
     padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.filters h3 {
+    font-size: 34px; /* Increased by 10px */
+    margin-bottom: 15px; /* Decreased by 5px */
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.filters input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; /* Decreased by 5px */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 26px; /* Increased by 10px */
+}
+
+.specialty,
+.employment,
+.salary-type {
+    margin-bottom: 15px; /* Decreased by 5px */
+}
+
+.specialty h4,
+.employment h4,
+.salary-type h4 {
+    font-size: 30px; /* Increased by 10px */
+    margin-bottom: 5px; /* Decreased by 5px */
+    font-weight: bold;
+    color: #333;
+}
+
+.specialty select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 26px; /* Increased by 10px */
+}
+
+.employment label {
+    font-size: 26px; /* Increased by 10px */
+    margin-bottom: 5px; /* Decreased by 5px */
+    display: block;
+}
+
+.employment input[type="checkbox"] {
+    width: 25px; /* Set custom width */
+    height: 25px; /* Set custom height */
+    margin-right: 10px;
+}
+
+.salary-type h4 {
+    font-size: 30px; /* Increased by 10px */
+    font-weight: bold;
+    color: #333;
+}
+
 
 
 /* Job Listings Section - 7/10 width */
