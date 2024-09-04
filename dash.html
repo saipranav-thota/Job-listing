@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Find Jobs</a></li>
+                <li><a href="#">Employers</a></li>
+                <li><a href="#">Upload Job</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <span class="username">Emma R.</span>
+            <span class="role">Quality Assurance</span>
+            <img src="profile-pic.png" alt="Profile Picture">
+        </div>
+    </header>
+
+    <section class="search-section">
+        <h1>Find Your Dream Job Here</h1>
+        <div class="search-container">
+            <div class="search-bar">
+                <div class="search-input">
+                    <input type="text" placeholder="Job title or keyword">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="search-input">
+                    <input type="text" placeholder="Add country or city">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <button class="search-button">Search</button>
+            </div>
+        </div>
+        <div class="tags">
+            <button>Sales</button>
+            <button>Fulltime</button>
+            <button>Remote</button>
+            <!-- Add more tags as needed -->
+        </div>
+    </section>
+    <div class="content-container">
+        <section class="filters-section">
+            <div class="filters">
+                <h3>Filter</h3>
+                <input type="text" placeholder="Company, skill, tag...">
+                <div class="specialty">
+                    <h4>Specialty</h4>
+                    <!-- Add specialty options here -->
+                </div>
+                <div class="employment">
+                    <h4>Employment</h4>
+                    <label><input type="checkbox" checked> Fulltime</label>
+                    <label><input type="checkbox" checked> Senior level</label>
+                    <label><input type="checkbox" checked> Remote</label>
+                    <label><input type="checkbox"> Contract</label>
+                </div>
+                <div class="salary-type">
+                    <h4>Salary Type</h4>
+                    <!-- Add salary type options here -->
+                </div>
+            </div>
+        </section>
+    
+        <section class="job-listings">
+            <div class="job">
+                <div class="job-details">
+                    <h3>UX Researcher</h3>
+                    <p>WebFlow</p>
+                    <span>Fulltime</span>
+                    <span>Senior level</span>
+                    <span>Remote</span>
+                    <p>California, CA</p>
+                </div>
+                <span class="time">1 hour ago</span>
+                <button class="bookmark"></button>
+            </div>
+    
+            <div class="job">
+                <div class="job-details">
+                    <h3>Quality Assurance</h3>
+                    <p>Notion</p>
+                    <span>Fulltime</span>
+                    <span>Senior level</span>
+                    <span>Remote</span>
+                    <p>Idaho, ID</p>
+                </div>
+                <span class="time">2 hours ago</span>
+                <button class="bookmark"></button>
+            </div>
+    
+            <!-- Add more job listings as needed -->
+        </section>
+    </div>
+    
+
+   
+</div>
+
+</body>
+</html>
