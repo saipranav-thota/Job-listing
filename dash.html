@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Search Interface</title>
+    <title>Job Listings</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -71,41 +70,40 @@
                 </div>
             </div>
         </section>
-    
+
         <section class="job-listings">
             <div class="job">
                 <div class="job-details">
-                    <h3>UX Researcher</h3>
-                    <p>WebFlow</p>
-                    <span>Fulltime</span>
-                    <span>Senior level</span>
-                    <span>Remote</span>
-                    <p>California, CA</p>
+                    <div class="job-details-pos">
+                        <div class="position">
+                            <p>UX Researcher</p>
+                        </div>
+                        <div class="job-company">
+                            <p>WebFlow</p>
+                        </div>
+                    </div>
+                    <div class="job-details-details">
+                        <span>Fulltime</span>
+                        <span>Senior level</span>
+                        <span>Remote</span>
+                    </div>
+                    <div class="job-details-location">
+                        <p>California, CA</p>
+                    </div>
+                    <div class="job-timing">
+                        <p>1 hour ago</p>
+                    </div>
+                    <div class="bookmark-container">
+                        <button class="bookmark" id="bookmarkButton">
+                            <img src="bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon" id="bookmarkIcon">
+                        </button>
+                    </div>
+                    <script src="script.js"></script>
                 </div>
-                <span class="time">1 hour ago</span>
-                <button class="bookmark"></button>
             </div>
-    
-            <div class="job">
-                <div class="job-details">
-                    <h3>Quality Assurance</h3>
-                    <p>Notion</p>
-                    <span>Fulltime</span>
-                    <span>Senior level</span>
-                    <span>Remote</span>
-                    <p>Idaho, ID</p>
-                </div>
-                <span class="time">2 hours ago</span>
-                <button class="bookmark"></button>
-            </div>
-    
+
             <!-- Add more job listings as needed -->
         </section>
     </div>
-    
-
-   
-</div>
-
 </body>
 </html>

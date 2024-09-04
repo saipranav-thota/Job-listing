@@ -1,4 +1,3 @@
-/* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -158,6 +157,7 @@ nav ul li a {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Job Listings Section - 7/10 width */
 .job-listings {
     flex: 7; /* Takes up 7 parts of the available space */
@@ -166,48 +166,103 @@ nav ul li a {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Example Job Details */
+/* Job */
 .job {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding: 15px 0;
+    flex-direction: row; /* Stacks job content vertically */
+    flex-wrap: nowrap; /* Prevents wrapping of child elements */
+    margin: 10px; /* Adds space between job listings */
+    align-items:  baseline;
 }
 
-.job-details h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
+/* Job Details */
+.job-details {
+    display: flex; /* Creates a flexible layout for job details */
+    gap: 20px; /* Adds space between the columns */
+    align-items: start; /* Aligns items at the start of each grid cell */
+    margin-bottom: 10px; /* Adds space below this section */
+}
+
+.job-company p{
+    font-size: 25px !important;
+}
+
+/* Specific styles for each section within the grid */
+.job-details-pos {
+    margin-right: 150px;
+}
+
+.job-details-details {
+    margin-right: 150px;
+}
+
+
+.job-details-location {
+    margin-right: 150px;
+}
+
+.job-timing {
+    flex: 1;
+    vertical-align: middle;
+    margin-right: 150px;
+}
+
+.job-timing p {
+    text-align: center;
+    font-size: 23px !important; /* Increased size by 20px */
+}
+
+.job-details-location p {
+    font-weight: 600;
+    text-align: center;
+    font-size: 23px !important; /* Increased size by 20px */
+}
+
+.position p {
+    font-weight: bolder;
+    font-size: 43px; /* Increased size by 20px */
 }
 
 .job-details p {
-    margin-bottom: 5px;
+    margin: 0; /* Removes default margin around the paragraph */
     color: #555;
+    font-size: 34px; /* Increased size by 20px */
 }
 
 .job-details span {
+    font-weight:550;
     display: inline-block;
     background-color: #F0F0F0;
-    padding: 5px 10px;
+    padding: 8px 12px; /* Adjust padding as needed */
     border-radius: 20px;
     margin-right: 10px;
-    font-size: 14px;
+    font-size: 23px !important; /* Increased size by 20px */
 }
 
-.time {
-    font-size: 14px;
+.job-details-location p,
+.job-timing p {
+    font-size: 34px; /* Increased size by 20px */
     color: #777;
 }
 
-.bookmark {
-    background: url('bookmark-icon.png') no-repeat center center;
-    background-size: cover;
-    width: 25px;
-    height: 25px;
-    border: none;
-    cursor: pointer;
+.bookmark-container {
+    display: flex;
 }
 
-.bookmark:hover {
-    filter: brightness(0.8);
+.bookmark {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.bookmark-icon {
+    width: 40px;
+    height: 40px;
+    transition: opacity 0.3s ease;
+    align-items: center;
+}
+
+.bookmark-icon.bookmarked {
+    content: url('bookmark-filled-icon.png');
 }
