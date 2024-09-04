@@ -50,11 +50,10 @@ nav ul li a {
 }
 
 .search-section {
-    background-image:url('hiring.jpg');
+    background-image: url('hiring.jpg');
     background-color: #E9ECEF;
     background-repeat: no-repeat;
-    background-size:cover;
-    
+    background-size: cover;
     padding: 40px 30px;
     text-align: center;
 }
@@ -64,7 +63,6 @@ nav ul li a {
     font-size: 28px;
 }
 
-/* Integrated Search Bar CSS */
 .search-container {
     display: flex;
     justify-content: center;
@@ -129,27 +127,22 @@ nav ul li a {
     background-color: #0056b3;
 }
 
-
-
-
-/* Content container setup */
 .content-container {
     display: flex;
-    gap: 20px; /* Space between filter and job listings */
+    gap: 20px;
     margin-top: 20px;
 }
 
-/* Filters Section - 3/10 width */
 .filters-section {
-    flex: 3; /* Takes up 3 parts of the available space */
+    flex: 3;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .filters h3 {
-    font-size: 34px; /* Increased by 10px */
-    margin-bottom: 15px; /* Decreased by 5px */
+    font-size: 34px;
+    margin-bottom: 15px;
     font-weight: bold;
     color: #007BFF;
 }
@@ -157,23 +150,23 @@ nav ul li a {
 .filters input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px; /* Decreased by 5px */
+    margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 26px; /* Increased by 10px */
+    font-size: 26px;
 }
 
 .specialty,
 .employment,
 .salary-type {
-    margin-bottom: 15px; /* Decreased by 5px */
+    margin-bottom: 15px;
 }
 
 .specialty h4,
 .employment h4,
 .salary-type h4 {
-    font-size: 30px; /* Increased by 10px */
-    margin-bottom: 5px; /* Decreased by 5px */
+    font-size: 30px;
+    margin-bottom: 5px;
     font-weight: bold;
     color: #333;
 }
@@ -183,81 +176,69 @@ nav ul li a {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 26px; /* Increased by 10px */
+    font-size: 26px;
 }
 
 .employment label {
-    font-size: 26px; /* Increased by 10px */
-    margin-bottom: 5px; /* Decreased by 5px */
+    font-size: 26px;
+    margin-bottom: 5px;
     display: block;
 }
 
 .employment input[type="checkbox"] {
-    width: 25px; /* Set custom width */
-    height: 25px; /* Set custom height */
+    width: 25px;
+    height: 25px;
     margin-right: 10px;
 }
 
 .salary-type h4 {
-    font-size: 30px; /* Increased by 10px */
+    font-size: 30px;
     font-weight: bold;
     color: #333;
 }
 
-
-
-/* Job Listings Section - 7/10 width */
 .job-listings {
-    flex: 7; /* Takes up 7 parts of the available space */
+    flex: 7;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Job */
 .job {
     display: flex;
-    flex-direction: row; /* Stacks job content vertically */
-    flex-wrap: nowrap; /* Prevents wrapping of child elements */
-    margin: 20px; /* Adds space between job listings */
-    align-items:  baseline;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 20px;
+    align-items: baseline;
 }
 
-/* Job Details */
 .job-details {
     display: grid;
     grid-template-columns: 3fr 4fr 1.5fr 1.5fr 1fr;
-    align-items: start; /* Aligns items at the start of each grid cell */
-    margin-bottom: 10px; /* Adds space below this section */
+    align-items: start;
+    margin-bottom: 10px;
     margin-top: 10px;
     padding-top: 10px;
 }
 
-.job-details:hover
-{
+.job-details:hover {
     background-color: #f9f7f7;
 }
 
-.job-company p{
+.job-company p {
     font-size: 23px !important;
 }
 
-/* Specific styles for each section within the grid */
 .job-details-pos {
     margin-right: 25px;
-}
-
-.job-details-pos {
-    white-space: nowrap !important; /* Prevents the text from wrapping to the next line */
-    
-    text-overflow: ellipsis; /* Adds an ellipsis (...) if the text is too long to fit */
-    width: 200px;    
+    white-space: nowrap !important;
+    text-overflow: ellipsis;
+    width: 200px;
 }
 
 .job-details-details {
     margin-right: 150px;
 }
-
 
 .job-details-location {
     margin-right: 150px;
@@ -271,39 +252,39 @@ nav ul li a {
 
 .job-timing p {
     text-align: center;
-    font-size: 20px !important; /* Increased size by 20px */
+    font-size: 20px !important;
 }
 
 .job-details-location p {
     font-weight: 600;
     text-align: center;
-    font-size: 23px !important; /* Increased size by 20px */
+    font-size: 23px !important;
 }
 
 .position p {
     font-weight: bolder;
-    font-size: 30px !important; /* Increased size by 20px */
+    font-size: 30px !important;
 }
 
 .job-details p {
-    margin: 0; /* Removes default margin around the paragraph */
+    margin: 0;
     color: #555;
-    font-size: 34px; /* Increased size by 20px */
+    font-size: 34px;
 }
 
 .job-details span {
-    font-weight:550;
+    font-weight: 550;
     display: inline-block;
     background-color: #F0F0F0;
-    padding: 8px 12px; /* Adjust padding as needed */
+    padding: 8px 12px;
     border-radius: 20px;
     margin-right: 10px;
-    font-size: 23px !important; /* Increased size by 20px */
+    font-size: 23px !important;
 }
 
 .job-details-location p,
 .job-timing p {
-    font-size: 34px; /* Increased size by 20px */
+    font-size: 34px;
     color: #777;
 }
 

@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 jobListings.appendChild(jobElement);
             });
 
-            // Add toggle functionality for bookmarks
             document.querySelectorAll('.bookmark').forEach(button => {
                 button.addEventListener('click', function() {
                     const icon = this.querySelector('.bookmark-icon');
