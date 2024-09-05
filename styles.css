@@ -50,7 +50,7 @@ nav ul li a {
 }
 
 .search-section {
-    background-image: url('hiring.jpg');
+    background-image: url("hiring.jpg");
     background-color: #E9ECEF;
     background-repeat: no-repeat;
     background-size: cover;
@@ -210,6 +210,7 @@ nav ul li a {
     flex-wrap: nowrap;
     margin: 20px;
     align-items: baseline;
+    height: 100px;
 }
 
 .job-details {
