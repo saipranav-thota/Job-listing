@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('jobs.json')
+    fetch("data/jobs.json")
         .then(response => response.json())
         .then(data => {
             const jobListings = document.getElementById('jobListings');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="bookmark-container">
                             <button class="bookmark">
-                                <img src="bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon" id="bookmarkIcon">
+                                <img src="static/bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon" id="bookmarkIcon">
                             </button>
                         </div>
                     </div>
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.addEventListener('click', function() {
                     const icon = this.querySelector('.bookmark-icon');
                     if (icon.src.includes('bookmark-outline-icon.png')) {
-                        icon.src = 'bookmark-filled-icon.png';
+                        icon.src = 'static/bookmark-filled-icon.png';
                     } else {
-                        icon.src = 'bookmark-outline-icon.png';
+                        icon.src = 'static/bookmark-outline-icon.png';
                     }
                 });
             });
