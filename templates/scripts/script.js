@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     fetch("data/jobs.json")
         .then(response => response.json())
@@ -9,29 +10,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 jobElement.className = 'job';
                 
                 jobElement.innerHTML = `
-                    <div class="job-details">
-                        <div class="job-details-pos">
-                            <div class="position">
-                                <p>${job.position}</p>
-                            </div>
-                            <div class="job-company">
-                                <p>${job.company}</p>
-                            </div>
+                    <div class='compay-details'>
+                        <div class="position">
+                            <p>${job.position}</p>
                         </div>
-                        <div class="job-details-details">
-                            ${job.details.map(detail => `<span>${detail}</span>`).join('')}
+                        <div class="company">
+                            <p>${job.company}</p>
                         </div>
-                        <div class="job-details-location">
-                            <p>${job.location}</p>
-                        </div>
-                        <div class="job-timing">
-                            <p>${job.time}</p>
-                        </div>
-                        <div class="bookmark-container">
-                            <button class="bookmark">
-                                <img src="static/bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon" id="bookmarkIcon">
-                            </button>
-                        </div>
+                    </div>
+                    <div class="job-details-details">
+                        ${job.details.map(detail => `<span>${detail}</span>`).join('')}
+                    </div>
+                    <div class="location">
+                        <p>${job.location}</p>
+                    </div>
+                    <div class="time">
+                        <p>${job.time}</p>
+                    </div>
+                    <div class="bookmark-container">
+                        <button class="bookmark">
+                            <img src="static/bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon">
+                        </button>
                     </div>
                 `;
                 
@@ -51,3 +50,4 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error fetching job data:', error));
 });
+

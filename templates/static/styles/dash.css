@@ -134,7 +134,7 @@ nav ul li a {
 }
 
 .filters-section {
-    flex: 3;
+    flex: 2;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -144,7 +144,7 @@ nav ul li a {
     font-size: 34px;
     margin-bottom: 15px;
     font-weight: bold;
-    color: #007BFF;
+    color: #000000;
 }
 
 .filters input[type="text"] {
@@ -198,99 +198,86 @@ nav ul li a {
 }
 
 .job-listings {
-    flex: 7;
+    flex: 8;
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .job {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin: 20px;
-    align-items: baseline;
-    height: 100px;
-}
-
-.job-details {
     display: grid;
-    grid-template-columns: 3fr 4fr 1.5fr 1.5fr 1fr;
-    align-items: start;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding-top: 10px;
+    grid-template-columns: 1fr 1.2fr 0.8fr 0.75fr auto; 
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
-.job-details:hover {
-    background-color: #f9f7f7;
+.job:hover {
+    background-color: #f4f8ff;
 }
 
-.job-company p {
-    font-size: 23px !important;
+.job p {
+    margin: 0;
+    color: #555;
+    font-size: 20px;
 }
 
-.job-details-pos {
-    margin-right: 25px;
-    white-space: nowrap !important;
-    text-overflow: ellipsis;
-    width: 200px;
+.job .position p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.job .company p {
+    font-size: 25px;
+    color: #777;
 }
 
 .job-details-details {
-    margin-right: 150px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    white-space: nowrap; 
+    width: 100%;
 }
 
-.job-details-location {
-    margin-right: 150px;
-}
-
-.job-timing {
-    flex: 1;
-    vertical-align: middle;
-    margin-right: 150px;
-}
-
-.job-timing p {
+.job-details-details span {
+    background-color: #f9f8f8;
+    padding: 9px 20px;
+    border-radius: 15px;
+    border: 1px solid #d0d0d0;
+    font-size: 25px;
+    flex-shrink: 0; 
     text-align: center;
-    font-size: 20px !important;
+    font-weight: 100px;
 }
 
-.job-details-location p {
-    font-weight: 600;
-    text-align: center;
-    font-size: 23px !important;
+.job:hover .job-details-details span {
+    background-color: #fafafa;
 }
 
-.position p {
-    font-weight: bolder;
-    font-size: 30px !important;
-}
-
-.job-details p {
-    margin: 0;
-    color: #555;
-    font-size: 34px;
-}
-
-.job-details span {
-    font-weight: 550;
-    display: inline-block;
-    background-color: #F0F0F0;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin-right: 10px;
-    font-size: 23px !important;
-}
-
-.job-details-location p,
-.job-timing p {
-    font-size: 34px;
+.job .location  p{
+    font-size: 25px;
     color: #777;
+    text-align: center;
+    font-weight: bold;
+}
+
+.job .time p {
+    font-size: 20px;
+    color: #777;
+    text-align: center;
 }
 
 .bookmark-container {
     display: flex;
+    justify-content: center;
+    align-items: right;
 }
 
 .bookmark {
@@ -300,13 +287,12 @@ nav ul li a {
     outline: none;
 }
 
-.bookmark-icon {
+.bookmark img {
     width: 40px;
     height: 40px;
     transition: opacity 0.3s ease;
-    align-items: center;
 }
 
-.bookmark-icon.bookmarked {
-    content: url('bookmark-filled-icon.png');
+.bookmark img.bookmarked {
+    content: url('static/bookmark-filled-icon.png');
 }
