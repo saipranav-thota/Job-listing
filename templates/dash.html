@@ -4,7 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Job Listings</title>
-     <link rel="stylesheet" href="static/styles/dash.css">
+     <link rel="stylesheet" href = "{{ url_for('static', filename='styles/dash.css') }}">
  </head>
  <body>
      <header>
@@ -30,12 +30,14 @@
          <div class="search-container">
              <div class="search-bar">
                  <div class="search-input">
+                    <form method="GET" action="/search">
                      <input type="text" placeholder="Job title or keyword">
                      <i class="fas fa-search"></i>
                  </div>
                  <div class="search-input">
-                     <input type="text" placeholder="Add country or city">
-                     <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" name="query" placeholder="Add country or city">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </form>
                  </div>
                  <button class="search-button">Search</button>
              </div>
@@ -71,7 +73,10 @@
          <section class="job-listings" id="jobListings"></section>
      </div>
  
-     <script src="scripts/script.js"></script>
+     <script>
+        const jobsUrl = "{{ url_for('static', filename='data/jobs.json') }}";
+    </script>
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>    
  </body>
  </html>
  
