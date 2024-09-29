@@ -4,6 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Job Listings</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <link rel="stylesheet" href = "{{ url_for('static', filename='styles/dash.css') }}">
  </head>
  <body>
@@ -29,16 +30,12 @@
      <section class="search-section">
          <div class="search-container">
              <div class="search-bar">
-                 <div class="search-input">
-                    <form method="GET" action="/search">
-                     <input type="text" placeholder="Job title or keyword">
-                     <i class="fas fa-search"></i>
-                 </div>
-                 <div class="search-input">
-                        <input type="text" name="query" placeholder="Add country or city">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </form>
-                 </div>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Job title or keyword">
+                    <ul class="results"></ul>
+                </div>
+            
+                <script src="static\scripts\script.js"></script>
                  <button class="search-button">Search</button>
              </div>
          </div>

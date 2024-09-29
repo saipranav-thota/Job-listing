@@ -51,3 +51,34 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error fetching job data:', error));
 });
 
+$(document).ready(function() {
+    let debounce;
+    $('.search-input').on('keydown', function(e) {
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+            getAutoComplete();
+        }, 300);
+    });
+});
+//Search box
+function getAutoComplete() {
+    const query = $('.search-input').val();
+    fetch(`http://127.0.0.1:5000/search?q=${encodeURIComponent(query.trim())}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+            $('.results').empty();
+            if (data.length > 0) { // Only show results if there are suggestions
+                for (let i = 0; i < data.length; i++) {
+                    $('.results').append(`<li>${data[i]}</li>`);
+                }
+            }
+        });
+}
+
+// Optional: Add click event to the suggestions
+$(document).on('click', '.results li', function() {
+    $('.search-input').val($(this).text()); // Populate input with selected suggestion
+    $('.results').empty(); // Clear suggestions
+});
+
+
