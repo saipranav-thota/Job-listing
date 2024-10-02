@@ -1,44 +1,56 @@
-# from elasticsearch import Elasticsearch
-# import csv
-
-# es = Elasticsearch(hosts= ["http://127.0.0.1:9200"])
-
-# print(f"Connected to es `{es.info().body['cluster_name']}`")
-
-# with open ("laptop_pricing_dataset_mod1.csv","r") as f:
-#     reader = csv.reader(f)
-
-#     for i, line in enumerate(reader):
-#         document ={
-#             "Manufacturer": line[1],
-#             "Screen": line[3],
-#         }
-#         es.index(index="laptops", document=document)
-
+import mysql.connector
 from elasticsearch import Elasticsearch
-import csv
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Connect to Elasticsearch
 es = Elasticsearch(hosts=["http://127.0.0.1:9200"])
 
-# Check connection
-print(f"Connected to Elasticsearch: `{es.info().body['cluster_name']}`")
+index_name = "jobs_listing"
 
-# Open and read the CSV file
-with open("laptop_pricing_dataset_mod1.csv", "r") as f:
-    reader = csv.reader(f)
+# Create the index if it does not exist
+if not es.indices.exists(index=index_name):
+    es.indices.create(index=index_name)
+    logger.info(f"Index '{index_name}' created.")
+else:
+    logger.info(f"Index '{index_name}' already exists.")
 
-    # Skip header if there is one
-    next(reader)
+# Connect to MySQL database
+try:
+    mysql_con = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='sql@2004',
+        database='jobs_listing'  
+    )
+    mysql_cur = mysql_con.cursor()
 
-    # Iterate through the rows in the CSV
-    for i, line in enumerate(reader):
-        # Create a document from the CSV row
+    # Query to select unique titles from the job_postings table
+    select_query = "SELECT DISTINCT title FROM job_postings"
+    mysql_cur.execute(select_query)
+
+    records = mysql_cur.fetchall()
+
+    # Index each unique title into Elasticsearch
+    for i, line in enumerate(records):
         document = {
-            "Manufacturer": line[1],  # Adjust index based on your CSV structure
-            "Screen": line[3],        # Adjust index based on your CSV structure
+            "title": line[0],  
         }
-        
-        es.index(index="laptops", document=document)
 
-        print(f"Indexed document {i + 1}: {document}")
+        if document["title"]:
+            es.index(index=index_name, document=document)
+            logger.info(f"Indexed document {i + 1}: {document}")
+
+except mysql.connector.Error as e:
+    logger.error(f"MySQL error: {e}")
+except Exception as e:
+    logger.error(f"Error: {e}")
+finally:
+    # Ensure resources are closed
+    if mysql_cur:
+        mysql_cur.close()
+    if mysql_con:
+        mysql_con.close()
