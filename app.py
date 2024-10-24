@@ -16,7 +16,14 @@ def dashboard():
     
     if search_query:
         # Use parameterized query to prevent SQL injection and get distinct job postings
-        select_query = "SELECT DISTINCT * FROM jobs_listing WHERE position = %s"
+        select_query = """
+               WITH unique_jobs AS (
+                   SELECT *, ROW_NUMBER() OVER (PARTITION BY position ORDER BY time_posted DESC) as rn
+                   FROM jobs_listing
+                   WHERE position = %s
+               )
+               SELECT * FROM unique_jobs WHERE rn = 1
+           """        
         cur.execute(select_query, (search_query,))    
     else:
         # If no search query, select all distinct jobs
