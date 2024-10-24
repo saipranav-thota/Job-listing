@@ -28,18 +28,19 @@
      </header>
  
      <section class="search-section">
-         <div class="search-container">
-             <div class="search-bar">
+        <div class="search-container">
+            <form class="search-bar" action="/home" method="GET">
                 <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Job title or keyword">
+                    <input type="text" class="search-input" placeholder="Job title or keyword" name="search" required>
                     <ul class="results"></ul>
                 </div>
-            
-                <script src="static\scripts\script.js"></script>
-                 <button class="search-button">Search</button>
-             </div>
-         </div>
-     </section>
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+    </section>
+    
+    <script src="static/scripts/script.js"></script>
+    
  
      <div class="content-container">
          <section class="filters-section">
@@ -67,13 +68,44 @@
              </div>
          </section>
  
-         <section class="job-listings" id="jobListings"></section>
-     </div>
- 
-     <script>
-        const jobsUrl = "{{ url_for('static', filename='data/jobs.json') }}";
-    </script>
-    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>    
- </body>
+        
+         <section class="job-listings" id="jobListings">
+            {% if jobs|length > 0 %}
+                {% for job in jobs %}
+                    <div class="job">
+                        <div class='company-details'>
+                            <div class="position">
+                                <p>{{ job[1] }}</p>  <!-- Job position -->
+                            </div>
+                            <div class="company">
+                                <p>{{ job[2] }}</p>  <!-- Company name -->
+                            </div>
+                        </div>
+                        <div class="job-details-details">
+                            <span>{{ job[3] }}</span>  <!-- Detail 1 -->
+                            <span>{{ job[4] }}</span>  <!-- Detail 2 -->
+                            <span>{{ job[5] }}</span>  <!-- Detail 3 -->
+                        </div>
+                        <div class="location">
+                            <p>{{ job[6] }}</p>  <!-- Job location -->
+                        </div>
+                        <div class="time">
+                            <p>{{ job[7] }}</p>  <!-- Job time -->
+                        </div>
+                        <div class="bookmark-container">
+                            <button class="bookmark">
+                                <img src="static/bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon">
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No job listings available.</p>  <!-- Message when no jobs are found -->
+            {% endif %}
+        </section>
+        
+        
+        </div>
+    </body>
  </html>
  

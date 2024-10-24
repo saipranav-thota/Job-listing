@@ -1,6 +1,7 @@
-import mysql.connector
+from connect import connection 
 from elasticsearch import Elasticsearch
 import logging
+import mysql.connector
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -19,28 +20,22 @@ else:
     logger.info(f"Index '{index_name}' already exists.")
 
 # Connect to MySQL database
+
+mysql_con = connection()
+mysql_cur = mysql_con.cursor()
+
 try:
-    mysql_con = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='sql@2004',
-        database='jobs_listing'  
-    )
-    mysql_cur = mysql_con.cursor()
-
     # Query to select unique titles from the job_postings table
-    select_query = "SELECT DISTINCT title FROM job_postings"
+    select_query = "SELECT DISTINCT position FROM jobs_listing"
     mysql_cur.execute(select_query)
-
     records = mysql_cur.fetchall()
-
+    
     # Index each unique title into Elasticsearch
     for i, line in enumerate(records):
         document = {
-            "title": line[0],  
+            "position": line[0],  # Change to line[0] to access the position correctly
         }
-
-        if document["title"]:
+        if document["position"]:
             es.index(index=index_name, document=document)
             logger.info(f"Indexed document {i + 1}: {document}")
 
