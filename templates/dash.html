@@ -4,6 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Job Listings</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <link rel="stylesheet" href = "{{ url_for('static', filename='styles/dash.css') }}">
  </head>
  <body>
@@ -27,22 +28,19 @@
      </header>
  
      <section class="search-section">
-         <div class="search-container">
-             <div class="search-bar">
-                 <div class="search-input">
-                    <form method="GET" action="/search">
-                     <input type="text" placeholder="Job title or keyword">
-                     <i class="fas fa-search"></i>
-                 </div>
-                 <div class="search-input">
-                        <input type="text" name="query" placeholder="Add country or city">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </form>
-                 </div>
-                 <button class="search-button">Search</button>
-             </div>
-         </div>
-     </section>
+        <div class="search-container">
+            <form class="search-bar" action="/home" method="GET">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Job title or keyword" name="search" required>
+                    <ul class="results"></ul>
+                </div>
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+    </section>
+    
+    <script src="static/scripts/script.js"></script>
+    
  
      <div class="content-container">
          <section class="filters-section">
@@ -70,13 +68,44 @@
              </div>
          </section>
  
-         <section class="job-listings" id="jobListings"></section>
-     </div>
- 
-     <script>
-        const jobsUrl = "{{ url_for('static', filename='data/jobs.json') }}";
-    </script>
-    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>    
- </body>
+        
+         <section class="job-listings" id="jobListings">
+            {% if jobs|length > 0 %}
+                {% for job in jobs %}
+                    <div class="job">
+                        <div class='company-details'>
+                            <div class="position">
+                                <p>{{ job[1] }}</p>  <!-- Job position -->
+                            </div>
+                            <div class="company">
+                                <p>{{ job[2] }}</p>  <!-- Company name -->
+                            </div>
+                        </div>
+                        <div class="job-details-details">
+                            <span>{{ job[3] }}</span>  <!-- Detail 1 -->
+                            <span>{{ job[4] }}</span>  <!-- Detail 2 -->
+                            <span>{{ job[5] }}</span>  <!-- Detail 3 -->
+                        </div>
+                        <div class="location">
+                            <p>{{ job[6] }}</p>  <!-- Job location -->
+                        </div>
+                        <div class="time">
+                            <p>{{ job[7] }}</p>  <!-- Job time -->
+                        </div>
+                        <div class="bookmark-container">
+                            <button class="bookmark">
+                                <img src="static/bookmark-outline-icon.png" alt="Bookmark" class="bookmark-icon">
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No job listings available.</p>  <!-- Message when no jobs are found -->
+            {% endif %}
+        </section>
+        
+        
+        </div>
+    </body>
  </html>
  
