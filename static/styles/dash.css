@@ -1,0 +1,503 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F4;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 90px;
+    height: 100px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+}
+
+.user-profile img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.search-section {
+    background-image: url('../hiring.jpg');
+    background-color: #E9ECEF;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.search-section h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 2000px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 7px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    height: 60%;
+}
+
+.search-box {   
+    display: flex;
+    align-items: center;
+    background-color: #F4F4F4;
+    border-radius: 50px;
+    padding: 7px 17px;
+    margin-right: 15px;
+    flex-grow: 1;
+    position: relative;
+    height: 80%;
+}
+
+.search-input {
+    border: none;
+    background: none;
+    outline: none;
+    padding-left: 25px;
+    font-size: 26px;
+    color: #777;
+    width: 100%;
+}
+
+.search-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 36px;
+    transition: background-color 0.3s ease;
+}
+
+.results {
+    position: absolute; 
+    top: 100%; 
+    left: 0.7%; 
+    z-index: 1000;
+    background-color: #fcfcfc;
+    border: none;
+    max-height: 200px;
+    overflow-y: auto;
+    width: calc(100% - 20px); 
+    border-radius: 50px;
+    padding: 12px 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+.results::-webkit-scrollbar {
+    display: none; /* Hides scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.results {
+    scrollbar-width: none; /* Hides scrollbar */
+}
+
+.results li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 27px;
+    text-align: left;
+    color: #777; 
+    transition: background-color 0.15s ease;
+}
+
+.results li:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.results li.active {
+    background-color: #007BFF;
+    color: white; 
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.content-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.filters-section {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 1%;
+}
+
+.filters h3 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #000001ce;
+}
+
+.employment,
+.date-posted,
+.work-mode,
+.location {
+    margin-bottom: 10px;
+}
+
+.all-filter-heading {
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.filter-heading {
+    font-size: 29px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333333d9;
+}
+
+.Dropdown-details {
+    display: block  ; /* Hide the details by default */
+    margin-top: 5px; /* Add some spacing */
+}
+.dropdown-content {
+    cursor: pointer; 
+    float: right;
+    background-color: #fff; 
+    padding: 10px; /* Padding for better appearance */
+    padding-top: 0px;
+    border: none; /* Border for button */
+}
+.active {
+    background-color: #fff; /* Active state background color */
+}
+
+.employment label,
+.date-posted label,
+.work-mode label,
+.location label {
+    font-size: 27px;
+    margin-bottom: 9px;
+    padding: 5px;
+    display: block;
+}
+
+.employment input[type="checkbox"],
+.date-posted input[type="checkbox"],
+.work-mode input[type="checkbox"],
+.location input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.slider {
+    appearance: none; /* Override default styling in WebKit browsers */
+    width: 90%; /* Full width */
+    height: 15px; /* Height of the track */
+    background: #ddd; /* Background color of the track */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove outline */
+    opacity: 1; /* Slight transparency */
+  }
+  
+  /* Style the thumb (the draggable part) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default styling */
+    appearance: none; /* Override default styling */
+    width: 25px; /* Width of the thumb */
+    height: 25px; /* Height of the thumb */
+    border-radius: 50%; /* Round thumb */
+    background: #000000; /* Thumb color */
+    cursor: pointer; /* Cursor style */
+  }
+  
+  /* For Firefox */
+  .slider::-moz-range-thumb {
+    width: 25px; /* Width of the thumb */
+    height: 25px; /* Height of the thumb */
+    border-radius: 50%; /* Round thumb */
+    background: #000000; /* Thumb color */
+    cursor: pointer; /* Cursor style */
+  }
+  
+  /* For Internet Explorer */
+  .slider::-ms-thumb {
+    width: 25px; /* Width of the thumb */
+    height: 25px; /* Height of the thumb */
+    border-radius: 50%; /* Round thumb */
+    background: #000000; /* Thumb color */
+  }
+
+  .experience-limits { 
+    display: flex;
+  }
+
+  .limit-1 { 
+    font-size: 27px;
+    margin-right: auto;
+    font-weight: 550;
+    color: #333333d9;
+  }
+
+  .limit-2 {
+    font-size: 27px;
+    margin-left: auto;
+    font-weight: 550;
+    color: #333333d9;
+    margin-right: 10%;
+  }
+  
+  .slider-balloon {
+    position: relative; /* Position relative to the container */
+    bottom: 7px; /* Position it above the slider */
+    left: 70%; /* Center horizontally */
+    transform: translateX(-0%); /* Adjust for centering */
+    background: #000000; /* Background color */
+    border: 1px solid #ddd; /* Border for visibility */
+    border-radius: 17px; /* Rounded corners */
+    padding: 10px 10px; /* Some padding */
+    font-size: 25px; /* Font size */
+    color: #ffffff; /* Text color */
+    text-align: center; /* Center text */
+    transition: opacity 0.2s; /* Smooth transition */
+    width: fit-content;
+  }
+  
+  /* Add a small triangle for the balloon effect */
+  .slider-balloon:after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Position it below the balloon */
+    left: 50%; /* Center horizontally */
+    margin-left: -5px; /* Adjust for centering */
+    border-width: 5px; /* Size of the triangle */
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent; /* White triangle */
+  }
+
+  .submit-button {
+    display: inline-block; /* Allows padding and alignment */
+    margin: 10px 0; /* Add margin to space out buttons */
+}
+
+.submit-button label {
+    display: inline-block; /* Ensures label acts like a block element */
+}
+
+.submit-button {
+    background-color: #007BFF; /* Change background on hover */
+    color: #ffffff; /* Background color */
+    border: 1px solid #007BFF; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for better spacing */
+    font-size: 25px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold;
+}
+
+/* Hover effect */
+.submit-button:hover {
+    background-color: #007BFF; /* Change background on hover */
+    color: #ffffff; /* Change text color on hover */
+}
+
+/* Active effect */
+.submit-button :active {
+    background-color: #0056b3; /* Darker shade on active */
+    border-color: #0056b3; /* Match border color */
+}
+
+
+.job-listings {
+    flex: 8;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 1%;
+}
+
+.job {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 0.8fr 0.75fr auto; 
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.job:hover {
+    background-color: #f4f8ff;
+}
+
+.job p {
+    margin: 0;
+    color: #555;
+    font-size: 20px;
+}
+
+.job .position p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.job .company p {
+    font-size: 25px;
+    color: #777;
+}
+
+.job-details-details {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    white-space: nowrap; 
+    width: 100%;
+}
+
+.job-details-details span {
+    background-color: #f9f8f8;
+    padding: 9px 20px;
+    border-radius: 15px;
+    border: 1px solid #d0d0d0;
+    font-size: 25px;
+    flex-shrink: 0; 
+    text-align: center;
+    font-weight: 100px;
+    width: 33%;
+}
+
+.job:hover .job-details-details span {
+    background-color: #fafafa;
+}
+
+.job .location  p{
+    font-size: 25px;
+    color: #777;
+    text-align: center;
+    font-weight: bold;
+}
+
+.job .time p {
+    font-size: 20px;
+    color: #777;
+    text-align: center;
+}
+
+.bookmark-container {
+    display: flex;
+    justify-content: center;
+    align-items: right;
+}
+
+.bookmark {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.bookmark img {
+    width: 40px;
+    height: 40px;
+    transition: opacity 0.3s ease;
+}
+
+.bookmark img.bookmarked {
+    content: url('static/bookmark-filled-icon.png');
+}
+
+.modal-content {
+    margin: 35%auto; 
+    max-width: 800px; 
+    width: 90%; 
+    height: auto; 
+}
+
+.modal-body {
+    overflow-y: auto; 
+    max-height: 70vh; 
+    justify-content: space-between; 
+    padding: 20px; 
+    font-size: 1.8rem; 
+    line-height: 1.5; 
+    background-color:#e0f7fa;
+}
+.modal-body strong {
+    font-size: 2.0rem; 
+    margin-bottom: 10px; 
+}
+.modal-footer {
+    display: flex;
+    justify-content: space-between; 
+}
+.modal-title {
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold;
+    font-size: 24px; 
+    color: #2c3e50; 
+    text-align: center; 
+    text-transform: uppercase;
+    letter-spacing: 1px; 
+    margin-bottom: 20px; 
+    border-bottom: 2px solid #3498db; 
+    padding-bottom: 10px; 
+}
