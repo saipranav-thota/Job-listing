@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Landing Page</title>
     <style>
+        /* Your existing styles */
         * {
             margin: 0;
             padding: 0;
@@ -38,7 +39,6 @@
         }
 
         .search-section {
-            background-image: url('../hiring.jpg');
             background-color: #E9ECEF;
             background-repeat: no-repeat;
             background-size: cover;
@@ -54,7 +54,6 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            max-width: 2000px;
             height: 180px;
             margin: 0 auto;
         }
@@ -107,17 +106,15 @@
         .results {
             position: absolute; 
             top: 100%; 
-            left: 0.7%; 
+            left: 0; 
             z-index: 1000;
             background-color: #fcfcfc;
-            border: none;
+            border: 1px solid #ccc;
             max-height: 200px;
             overflow-y: auto;
-            width: calc(100% - 20px); 
-            border-radius: 50px;
-            padding: 12px 12px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 5px 0;
             list-style-type: none;
             display: none;
         }
@@ -126,20 +123,12 @@
             display: block;
         }
 
-        .results::-webkit-scrollbar {
-            display: none;
-        }
-
-        .results {
-            scrollbar-width: none;
-        }
-
         .results li {
             padding: 10px;
             cursor: pointer;
-            font-size: 27px;
+            font-size: 20px;
             text-align: left;
-            color: #777; 
+            color: #555; 
             transition: background-color 0.15s ease;
         }
 
@@ -148,41 +137,8 @@
             color: #000;
         }
 
-        .results li.active {
-            background-color: #007BFF;
-            color: white; 
-        }
-
         .search-button:hover {
             background-color: #0056b3;
-        }
-
-        @media (max-width: 768px) {
-            .search-bar {
-                flex-direction: column;
-                height: auto;
-                padding: 15px;
-            }
-
-            .search-box {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .search-button {
-                width: 100%;
-                font-size: 24px;
-                padding: 10px 20px;
-            }
-
-            .search-input {
-                font-size: 20px;
-            }
-
-            .results li {
-                font-size: 20px;
-            }
         }
     </style>
 </head>
@@ -194,7 +150,7 @@
 
     <section class="search-section">
         <div class="search-container">
-            <form class="search-bar" action="/home" method="GET">
+            <form class="search-bar" action="/landing" method="GET">
                 <div class="search-box">
                     <input 
                         type="text" 
@@ -210,119 +166,58 @@
             </form>
         </div>
     </section>
-
     <script>
-    $(document).ready(function() {
-    let debounce;
-    let showSuggestions = true; // Start with suggestions enabled
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.querySelector('.search-input');
+            const resultsList = document.querySelector('.results');
 
-    // Search functionality
-    $('.search-input').on('keydown', function(e) {
-        if (e.key === "Escape") {
-            $('.results').empty(); // Clear suggestions
-            showSuggestions = false; // Disable showing suggestions
-            return; // Exit the function
-        }
+            let debounceTimeout;
 
-        if (e.key.length === 1 || e.key === "Backspace") {
-            clearTimeout(debounce);
-            debounce = setTimeout(() => {
-                const query = $('.search-input').val().trim();
+            searchInput.addEventListener('input', function () {
+                const query = searchInput.value.trim();
+
+                if (debounceTimeout) clearTimeout(debounceTimeout);
 
                 if (query.length > 0) {
-                    showSuggestions = true; // Enable showing suggestions
-                    getAutoComplete(query);
+                    debounceTimeout = setTimeout(() => {
+                        fetch(`/search?q=${encodeURIComponent(query)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                resultsList.innerHTML = '';
+                                if (data.length > 0) {
+                                    resultsList.classList.add('active');
+                                    data.forEach(item => {
+                                        const li = document.createElement('li');
+                                        li.textContent = item;
+                                        resultsList.appendChild(li);
+                                    });
+                                } else {
+                                    resultsList.classList.remove('active');
+                                }
+                            })
+                            .catch(error => console.error('Error fetching suggestions:', error));
+                    }, 300);
                 } else {
-                    $('.results').empty(); // Clear suggestions if input is empty
-                    showSuggestions = false; // Update flag since suggestions are hidden
-                }
-            }, 300);
-        }
-    });
-
-    // Fetch autocomplete suggestions
-    function getAutoComplete(query) {
-        fetch(`http://127.0.0.1:5000/search?q=${encodeURIComponent(query)}`)
-            .then((resp) => resp.json())
-            .then((data) => {
-                $('.results').empty();
-                if (data.length > 0 && showSuggestions) {
-                    for (let i = 0; i < data.length; i++) {
-                        $('.results').append(`<li>${data[i]}</li>`);
-                    }
+                    resultsList.innerHTML = '';
+                    resultsList.classList.remove('active');
                 }
             });
-    }
 
-    // Click event for suggestion selection
-    $(document).on('click', '.results li', function() {
-        $('.search-input').val($(this).text()); // Populate input with selected suggestion
-        $('.results').empty(); // Clear suggestions
-        postQueryToBackend($(this).text());
-    });
-
-    // Function to post the query to the backend
-    function postQueryToBackend(query) {
-        if (query.trim() === '') {
-            console.log('Search box is empty, fetching all jobs...');
-            fetchAllJobs();
-        } else {
-            fetch(`http://127.0.0.1:5000/post_query`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ query: query }) // Send the selected query as JSON
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Query posted to backend:', data);
-            })
-            .catch((error) => {
-                console.error('Error posting query to backend:', error);
+            resultsList.addEventListener('click', function (event) {
+                if (event.target.tagName === 'LI') {
+                    searchInput.value = event.target.textContent;
+                    resultsList.innerHTML = '';
+                    resultsList.classList.remove('active');
+                }
             });
-        }
-    }
 
-    //Function to fetch all jobs
-    function fetchAllJobs() {
-        fetch(`http://127.0.0.1:5000/home`)
-        .then((response) => response.text())
-        .then((html) => {
-            $('#jobListings').html(html); // Update job listings
-        })
-        .catch((error) => {
-            console.error('Error fetching all jobs:', error);
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.search-box')) {
+                    resultsList.innerHTML = '';
+                    resultsList.classList.remove('active');
+                }
+            });
         });
-    }
-
-    $('.dropdown-content').each(function() {
-        // Inject the initial SVG icon (chevron-down)
-        $(this).html(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
-            </svg>
-        `);
-    });
-
-    // Collapsible functionality
-    $('.dropdown-content').click(function() {
-        $(this).toggleClass("active");
-        $(this).next('.Dropdown-details').slideToggle(); // Use slideToggle for smooth animation
-
-        let svgIcon = $(this).find('svg');
-        if ($(this).hasClass("active")) {
-            svgIcon.html(`
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-              `);
-        } else {
-            svgIcon.html(`
-                <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
-            `);
-        }
-    })
-
-    });
     </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, jsonify
+from flask import Flask, render_template, url_for, request, jsonify, redirect
 from elasticsearch import Elasticsearch
 from connect import connection
 
@@ -149,6 +149,11 @@ def get_job(job_id):
 @app.route('/landing')
 def landing():
     con = connection()
+    search_query = request.args.get('search', '').strip()
+    print(search_query)
+
+    jobs = []  # Initialize jobs to an empty list
+
     # Handle search query for job position (if search is used)
     if search_query:
         cur2 = con.cursor()
@@ -164,15 +169,13 @@ def landing():
         cur2.execute(select_query, (search_query,))
         jobs = cur2.fetchall()
         cur2.close()
-    else:
-        # Use the filtered results if no search is used
-        jobs = results if results else []
+        return redirect(url_for('dashboard', search=search_query))
 
     # Close the connection
     con.close()
 
     # Return filtered jobs and results to the template
-    return render_template('landing.html', jobs = jobs)
+    return render_template('landing.html', jobs=jobs)
 
 if __name__ == '__main__':
     app.run(debug=True)
