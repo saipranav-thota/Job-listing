@@ -89,6 +89,7 @@ def dashboard():
     # Return filtered jobs and results to the template
     return render_template('dash.html', jobs=jobs)
 
+
 # results=results
 
 
