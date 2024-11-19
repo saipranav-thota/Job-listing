@@ -8,18 +8,21 @@ app = Flask(__name__)
 
 MAX_SIZE = 30
 
+
 @app.route("/home", methods=['GET', 'POST'])
 def dashboard():
     con = connection()
     cur1 = con.cursor()
     
     # Get filter values from request
-    search_query = request.args.get('search', '').strip()
+    search_query = request.args.get('search', '').strip()  # This is the correct way to get the search query
     date_posted = request.args.get('Date Posted')
     experience = request.args.get('Experience')
     employment_type = request.args.get('Employment')
     work_mode = request.args.get('Work Mode')
     location = request.args.get('Location')
+    print("This is the search querry")
+    print(search_query)
 
     # Handle experience as an integer (if valid) or set to None
     if experience and experience.isdigit():
@@ -75,7 +78,7 @@ def dashboard():
                 WHERE position LIKE %s
             )
             SELECT * FROM unique_jobs WHERE rn = 1
-            '''
+        '''
         cur2.execute(select_query, (search_query,))
         jobs = cur2.fetchall()
         cur2.close()
@@ -88,7 +91,6 @@ def dashboard():
 
     # Return filtered jobs and results to the template
     return render_template('dash.html', jobs=jobs)
-
 
 # results=results
 
@@ -166,10 +168,11 @@ def landing():
                 WHERE position LIKE %s
             )
             SELECT * FROM unique_jobs WHERE rn = 1
-            '''
+        '''
         cur2.execute(select_query, (search_query,))
         jobs = cur2.fetchall()
         cur2.close()
+        # Redirect to '/home' with the search query passed as 'search'
         return redirect(url_for('dashboard', search=search_query))
 
     # Close the connection
